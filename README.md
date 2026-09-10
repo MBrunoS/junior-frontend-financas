@@ -18,8 +18,9 @@ pnpm dev
 ```
 
 Consulte [Releases](https://github.com/MBrunoS/junior-frontend-financas/releases)
-para baixar o pacote associado a cada sprint. Tente implementar antes de abrir
-a referência.
+para baixar as tags imutáveis `sprint-N-materials`. Elas contêm os materiais da
+etapa; seu código acumulado deve viver em um repositório da sua conta. Tente
+implementar antes de abrir a referência.
 
 ## API local
 

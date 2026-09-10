@@ -1,11 +1,11 @@
 {
   "repository": "junior-backend-financas",
-  "tags": [
-    { "sprint": 1, "start": "sprint-1-start", "solution": "sprint-1-solution", "outcome": "CRUD NestJS em memória" },
-    { "sprint": 2, "start": "sprint-2-start", "solution": "sprint-2-solution", "outcome": "PostgreSQL, Prisma, migrations e seed" },
-    { "sprint": 3, "start": "sprint-3-start", "solution": "sprint-3-solution", "outcome": "JWT e isolamento por usuário" },
-    { "sprint": 4, "start": "sprint-4-start", "solution": "sprint-4-solution", "outcome": "Filtros, paginação, resumo e Swagger" },
-    { "sprint": 5, "start": "sprint-5-start", "solution": "sprint-5-solution", "outcome": "Testes unitários, integração, e2e e contrato" },
-    { "sprint": 6, "start": "sprint-6-start", "solution": "sprint-6-solution", "outcome": "Integração com cliente real e deploy" }
+  "releases": [
+    { "sprint": 1, "materials": "sprint-1-materials", "outcome": "CRUD NestJS em memória" },
+    { "sprint": 2, "materials": "sprint-2-materials", "outcome": "PostgreSQL, Prisma, migrations e seed" },
+    { "sprint": 3, "materials": "sprint-3-materials", "outcome": "JWT e isolamento por usuário" },
+    { "sprint": 4, "materials": "sprint-4-materials", "outcome": "Filtros, paginação, resumo e Swagger" },
+    { "sprint": 5, "materials": "sprint-5-materials", "outcome": "Testes unitários, integração, e2e e contrato" },
+    { "sprint": 6, "materials": "sprint-6-materials", "outcome": "Integração com cliente real e deploy" }
   ]
 }

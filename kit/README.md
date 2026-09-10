@@ -45,5 +45,5 @@ pnpm contract:test  # testa a URL de API definida em API_BASE_URL
 ```
 
 As implementações oficiais são ferramentas de integração, não soluções que o
-aluno deve copiar. Os critérios e checkpoints de cada sprint ficam nas páginas
-dos cursos e nos manifestos em `checkpoints/`.
+aluno deve copiar. Os critérios e as releases de materiais de cada sprint ficam
+nas páginas dos cursos e nos manifestos em `checkpoints/`.
