@@ -1,0 +1,54 @@
+---
+title: "Integração Final do Front-end"
+description: "Valide o MB Finanças contra o contrato e prove que sua interface pode trocar de implementação sem ser reescrita."
+---
+
+Nesta etapa você fará duas execuções da mesma aplicação: uma em modo demonstração e outra contra a API HTTP de referência. O comportamento visível deve ser equivalente.
+
+## 1. Centralize a configuração
+
+Valide a variável na inicialização e nunca espalhe URLs pelo código:
+
+```ts
+export const config = {
+  apiUrl: import.meta.env.VITE_API_URL ?? "http://localhost:3333",
+  demoMode: import.meta.env.VITE_DEMO_MODE === "true",
+};
+```
+
+Documente `.env.example`, sem tokens ou senhas reais. O token de acesso permanece em memória; ao recarregar, a pessoa entra novamente. Persistência de sessão segura será aprofundada em outro nível.
+
+## 2. Valide o contrato por operação
+
+Para cada chamada, confronte método, rota, query, corpo, status e resposta com o OpenAPI:
+
+| Intenção | Operação | Verificação principal |
+|---|---|---|
+| Criar conta | `POST /auth/register` | tratar `409` sem apagar o formulário |
+| Entrar | `POST /auth/login` | armazenar apenas `accessToken` e `user` |
+| Validar sessão | `GET /me` | redirecionar em `401` |
+| Listar | `GET /transactions` | ler `{ data, meta }` |
+| Criar | `POST /transactions` | enviar centavos como inteiro |
+| Editar | `PATCH /transactions/:id` | enviar somente campos alterados |
+| Remover | `DELETE /transactions/:id` | aceitar corpo vazio com `204` |
+| Resumir | `GET /summary` | não derivar de uma página incompleta |
+
+Crie uma classe `ApiError` contendo `statusCode`, `code`, `message` e `fieldErrors`. A interface decide como apresentar o erro; o cliente HTTP apenas preserva a informação.
+
+## 3. Rode os dois modos
+
+Primeiro execute a suíte com MSW. Depois desligue os mocks, inicie o kit local e rode:
+
+```bash
+VITE_API_URL=http://localhost:3333 pnpm dev
+```
+
+Use duas contas. Crie dados diferentes em cada uma e confirme que não há vazamento. Altere filtros e navegue entre páginas. Interrompa o servidor, tente salvar e confirme que o texto digitado continua disponível. Reinicie e tente novamente.
+
+## 4. Prepare a troca por outra API
+
+Peça a URL local de um projeto da trilha back-end ou use a sua própria API, se estiver fazendo as duas trilhas. Troque apenas `VITE_API_URL`. Se precisar alterar componentes, tipos ou criar condicionais por servidor, registre a divergência e corrija primeiro quem não cumpre o contrato.
+
+## Critério de conclusão
+
+O front passa nesta etapa quando cadastro, autenticação, CRUD, filtros, paginação e resumo funcionam com mocks e com uma API real, mudando somente configuração. Faça o commit e marque `sprint-6-integration` antes da auditoria.

@@ -1,0 +1,52 @@
+---
+title: "Auditoria do Projeto Front-end"
+description: "Revise comportamento, acessibilidade, contrato, testes e experiência antes de publicar."
+---
+
+Uma suíte verde não garante que o produto esteja pronto. Esta auditoria combina automação com uma revisão manual curta e reproduzível.
+
+## Portão automatizado
+
+Execute no projeto do aluno:
+
+```bash
+pnpm lint
+pnpm test --run
+pnpm build
+```
+
+Todos precisam terminar sem erro. Não silencie TypeScript com `any`, não remova assertions importantes e não atualize testes apenas para fazê-los aceitar um bug.
+
+## Roteiro funcional
+
+Em uma janela anônima:
+
+1. crie uma conta e tente repetir o mesmo e-mail;
+2. erre a senha e depois entre corretamente;
+3. crie receita e despesa com valores decimais;
+4. edite descrição, valor e data;
+5. combine filtros e navegue entre páginas;
+6. cancele e depois confirme uma remoção;
+7. confira os totais e o agrupamento por categoria;
+8. saia e tente abrir diretamente o dashboard;
+9. repita com outra conta e verifique o isolamento;
+10. interrompa a API e confirme uma recuperação compreensível.
+
+## Roteiro de interface
+
+- Faça todo o fluxo principal apenas por teclado.
+- Confirme foco visível e foco enviado ao primeiro campo inválido.
+- Use zoom de 200% e largura aproximada de 360 px.
+- Verifique contraste, rótulos, títulos e anúncios de carregamento/erro.
+- Confirme que receitas e despesas não dependem somente da cor.
+
+## Matriz mínima de testes
+
+| Camada | Deve provar |
+|---|---|
+| Regras | centavos, filtros e validação |
+| Componentes | formulário, edição, vazio e confirmação |
+| Integração simulada | login, CRUD, `401` e falha de rede |
+| Build | tipos, imports e bundle de produção |
+
+Registre problemas como issues, corrija os bloqueadores e repita somente o roteiro afetado mais uma passagem completa ao final. Anexe o resultado no README em uma seção “Qualidade e testes”.

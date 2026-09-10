@@ -1,0 +1,53 @@
+---
+title: "Sprint 6: Publicação e Portfólio"
+description: "Publique o MB Finanças em modo demonstração e prepare a integração com qualquer API compatível."
+---
+
+> **Materiais:** [abra o repositório](https://github.com/MBrunoS/junior-frontend-financas) e use a release `sprint-6-start`. A entrega oficial fica em `sprint-6-solution`.
+
+O front-end deve continuar demonstrável mesmo para quem cursou apenas esta trilha. Por isso a publicação padrão usa o modo demonstração com MSW; uma segunda configuração pode apontar para uma API publicada.
+
+## Deploy independente
+
+Configure na plataforma de deploy:
+
+```text
+VITE_DEMO_MODE=true
+```
+
+Garanta que o service worker do MSW esteja em `public/`, que o build não contenha senhas e que o modo demonstração mostre um aviso discreto: os dados pertencem somente àquele navegador. Cadastre, edite e remova uma transação na URL de produção antes de divulgá-la.
+
+## Deploy integrado
+
+Quando houver uma API pública compatível:
+
+```text
+VITE_DEMO_MODE=false
+VITE_API_URL=https://sua-api.example.com
+```
+
+A API precisa autorizar exatamente a origem do front. Teste `OPTIONS`, login e uma operação autenticada no navegador. Nunca use `mode: "no-cors"`: ele torna a resposta ilegível e não corrige a configuração do servidor.
+
+## README de portfólio
+
+Inclua:
+
+- problema resolvido e público-alvo;
+- URL, capturas desktop/mobile e conta de demonstração quando aplicável;
+- tecnologias e arquitetura em até dois parágrafos;
+- como rodar nos modos demonstração e integrado;
+- link para o contrato OpenAPI;
+- comandos de lint, testes e build;
+- decisões relevantes, limitações conhecidas e próximos passos.
+
+Não descreva o projeto como “feito seguindo um curso”. Explique as decisões que você tomou e os problemas que resolveu.
+
+## Checklist final
+
+- A URL abre em janela anônima e em dispositivo móvel.
+- Não há erro no console nem requisição para `localhost` em produção.
+- O fluxo crítico tem testes e foi repetido após o deploy.
+- O repositório não contém `.env`, tokens ou credenciais privadas.
+- O projeto recebe a tag `v1.0.0` e a release resume a entrega.
+
+Parabéns: você não publicou apenas uma tela. Você entregou um cliente completo, testado contra um contrato real e capaz de integrar diferentes implementações de back-end.

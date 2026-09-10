@@ -1,0 +1,52 @@
+---
+title: "Entrega Final: Planejando a Integração"
+description: "Faça o inventário do que já foi construído e planeje a última versão publicável do MB Finanças."
+---
+
+O projeto final não começa nesta página. Você já o construiu em cinco sprints: desenhou a interface, implementou comportamento com DOM, migrou para React, conectou uma API e criou testes. O Capítulo 6 existe para transformar essas entregas em um produto coerente e publicável.
+
+## Definição do produto
+
+O **MB Finanças** permite que uma pessoa crie uma conta e organize receitas e despesas privadas. A versão obrigatória inclui:
+
+- cadastro, login, logout e proteção do dashboard;
+- totais de receita, despesa e saldo;
+- criação, listagem, edição e remoção de transações;
+- filtros por tipo, categoria e período;
+- paginação;
+- estados de carregamento, vazio, erro e sessão expirada;
+- layout responsivo e operação por teclado;
+- testes automatizados dos fluxos críticos.
+
+Não fazem parte da entrega obrigatória: refresh token, OAuth, categorias personalizadas, recorrência, anexos, múltiplas moedas e gráficos com bibliotecas. Escolha no máximo uma extensão depois que o núcleo estiver concluído.
+
+## Arquitetura de integração
+
+```text
+Componentes React
+      ↓ intenções e dados
+Hooks da feature
+      ↓
+Módulos de API
+      ↓
+Cliente HTTP ─── VITE_API_URL ─── Contrato OpenAPI
+                                     ├── API oficial local
+                                     └── API de um aluno back-end
+```
+
+A aplicação depende do contrato, não de detalhes internos do servidor. O modo demonstração usa handlers MSW e persistência no navegador; o modo integrado usa HTTP real. Nenhum componente precisa saber qual modo está ativo.
+
+## Inventário antes de finalizar
+
+Crie uma issue para cada falha encontrada e classifique como bloqueadora ou melhoria:
+
+1. Compare seus tipos e rotas com `contract/openapi.yaml`.
+2. Procure chamadas `fetch` fora de `src/api`.
+3. Percorra todos os estados da tela sem depender apenas do caminho feliz.
+4. Confirme que o resumo vem de `/summary`, pois uma página de transações não contém necessariamente todos os dados.
+5. Recarregue e expire a sessão manualmente.
+6. Teste uma conta sem transações e duas contas com dados diferentes.
+
+## Plano de entrega
+
+Congele novas funcionalidades. Resolva primeiro incompatibilidades de contrato, depois acessibilidade, testes, responsividade e documentação. Use commits pequenos e mantenha o build verde. A próxima página conduz a integração final; as seguintes fazem a auditoria e o deploy.

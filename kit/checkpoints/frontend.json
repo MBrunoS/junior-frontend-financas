@@ -1,0 +1,11 @@
+{
+  "repository": "junior-frontend-financas",
+  "tags": [
+    { "sprint": 1, "start": "sprint-1-start", "solution": "sprint-1-solution", "outcome": "Dashboard estático, responsivo e acessível" },
+    { "sprint": 2, "start": "sprint-2-start", "solution": "sprint-2-solution", "outcome": "CRUD em memória com DOM e TypeScript" },
+    { "sprint": 3, "start": "sprint-3-start", "solution": "sprint-3-solution", "outcome": "Aplicação reconstruída em React" },
+    { "sprint": 4, "start": "sprint-4-start", "solution": "sprint-4-solution", "outcome": "Autenticação e integração HTTP" },
+    { "sprint": 5, "start": "sprint-5-start", "solution": "sprint-5-solution", "outcome": "Testes automatizados dos fluxos críticos" },
+    { "sprint": 6, "start": "sprint-6-start", "solution": "sprint-6-solution", "outcome": "Aplicação auditada e publicada" }
+  ]
+}
